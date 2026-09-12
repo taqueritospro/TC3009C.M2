@@ -4,36 +4,36 @@ import matplotlib.pyplot as plt
 
 df_raw = pd.read_csv("../data/abalone.data")
 df_raw.columns = ['Sex', 'Lenght', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight', 'Class']
-df_raw.head()
+print(df_raw.head())
 
-df_raw.describe()
+print(df_raw.describe())
 
 df_anomaly = df_raw[df_raw['Height'] == 0]
-df_anomaly
+print(df_anomaly)
 
 df_sex_i = df_raw[df_raw['Sex'] == 'I']
-df_sex_i.count()
+print(df_sex_i.count())
 
 anomaly_index = df_raw[df_raw['Height'] == 0].index
 df_data = df_raw.drop(anomaly_index)
-df_data.describe()
+print(df_data.describe())
 
 df_data = pd.get_dummies(df_data, columns = ['Sex'], dtype = float)
-df_data
+print(df_data)
 
 graph_columns = ['Lenght', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight', 'Class']
 pd.plotting.scatter_matrix(df_data[graph_columns], figsize = (18, 18))
 
 corr_matrix = df_data.corr()
 corr_clase = corr_matrix['Class'].sort_values(ascending = False)
-corr_clase
+print(corr_clase)
 
 x_features = df_data[['Lenght', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight']]
 x_mean = np.mean(x_features, axis = 0)
 x_std = np.std(x_features, axis = 0)
 x_std[x_std == 0] = 1e-8
 x_scaled = (x_features - x_mean) / x_std
-x_scaled.describe()
+print(x_scaled.describe())
 
 # Convertimos el data set a arreglos de numpy
 X = x_scaled.to_numpy()
