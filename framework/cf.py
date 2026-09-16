@@ -7,10 +7,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error, r2_score
 
-df_raw = pd.read_csv("../data/abalone.data")
-
 ''' EDA '''
-df_raw = pd.read_csv("abalone.data")
+df_raw = pd.read_csv("../data/abalone.data")
 df_raw.columns = ['Sex', 'Lenght', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight', 'Class']
 print(df_raw.head())
 

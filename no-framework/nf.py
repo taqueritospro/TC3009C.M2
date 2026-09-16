@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 ''' EDA '''
 
-df_raw = pd.read_csv("abalone.data")
+df_raw = pd.read_csv("../data/abalone.data")
 df_raw.columns = ['Sex', 'Lenght', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight', 'Class']
 print(df_raw.head())
 
